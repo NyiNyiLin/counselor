@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.nyi.annonymous.counselling.fragments.LiveFeedFragment;
+
 /**
  * Created by IN-3442 on 11-Oct-15.
  */
@@ -17,7 +19,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position==0){
-            return new Fragment();
+            return LiveFeedFragment.newInstance();
         }
         else {
             return new Fragment();

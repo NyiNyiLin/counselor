@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
         }
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -57,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Menu leftMenu = navigationView.getMenu();
         navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, HomeFragment.newInstance())
+                .commit();
     }
 
     @Override
