@@ -9,10 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.adapters.LiveFeedAdapter;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
+import com.nyi.annonymous.counselling.utils.Constants;
+import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 import com.nyi.annonymous.counselling.views.holders.LiveFeedVH;
 
 import java.util.ArrayList;
@@ -50,16 +56,16 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dummyData();
+        //dummyData();
         liveFeedAdapter = new LiveFeedAdapter(liveFeedList, this);
     }
 
     private void dummyData() {
-        liveFeedList.add(new LiveFeed("Name", "Post", 12, "asas"));
-        liveFeedList.add(new LiveFeed("Nyi", "sdhfkjhasjfkd", 12, "asas"));
-        liveFeedList.add(new LiveFeed("Rat", "afsdgdsfgf", 12, "asas"));
-        liveFeedList.add(new LiveFeed("Khin", "dkjfhsjkfhksjhfkjdhjfdhdsjkfhsdkjhgj", 12, "asas"));
-        liveFeedList.add(new LiveFeed("May", "dlkkjsdhgkjhjkghfjkhj", 12, "asas"));
+        liveFeedList.add(new LiveFeed("key","Name", "Post", 12, "asas", true));
+        liveFeedList.add(new LiveFeed("key","Nyi", "sdhfkjhasjfkd", 12, "asas", false));
+        liveFeedList.add(new LiveFeed("key", "Rat", "afsdgdsfgf", 12, "asas", true));
+        liveFeedList.add(new LiveFeed("key", "Khin", "dkjfhsjkfhksjhfkjdhjfdhdsjkfhsdkjhgj", 12, "asas", false));
+        liveFeedList.add(new LiveFeed("key", "May", "dlkkjsdhgkjhjkghfjkhj", 12, "asas", true));
     }
 
     @Override
@@ -74,6 +80,7 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
         LinearLayoutManager layoutManager = new LinearLayoutManager(Counselling.getContext(), LinearLayoutManager.VERTICAL, false);
         rvLiveFeed.setLayoutManager(layoutManager);
 
+        getDataFromFirebase();
         return view;
     }
 
@@ -85,5 +92,37 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
     @Override
     public void onTapComment() {
 
+    }
+
+    private void getDataFromFirebase(){
+        DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED);
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                LiveFeed liveFeed = dataSnapshot.getValue(LiveFeed.class);
+                liveFeed.setID(s);
+                liveFeedAdapter.addNewMenu(liveFeed);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

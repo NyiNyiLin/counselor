@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.fragments.HomeFragment;
+import com.nyi.annonymous.counselling.fragments.PostFragment;
+import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,11 +56,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                DialogFragment postDial = PostFragment.newInstance();
+                postDial.show(getSupportFragmentManager(), "Post");
             }
         });
 
         Menu leftMenu = navigationView.getMenu();
         navigationView.setNavigationItemSelectedListener(this);
+        FirebaseUtil.getObjInstance().uploadUser();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout, HomeFragment.newInstance())
