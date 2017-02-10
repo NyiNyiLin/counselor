@@ -95,7 +95,6 @@ public class PostFragment extends DialogFragment {
         });
 
         return builder.create();
-
     }
 
     private void post(String feeling){

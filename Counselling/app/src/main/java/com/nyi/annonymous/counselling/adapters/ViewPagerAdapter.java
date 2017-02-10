@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.nyi.annonymous.counselling.fragments.LeaderBoardFragment;
 import com.nyi.annonymous.counselling.fragments.LiveFeedFragment;
 
 /**
@@ -21,19 +22,23 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         if(position==0){
             return LiveFeedFragment.newInstance();
         }
-        else {
+        else if(position == 1){
             return new Fragment();
+        }
+        else {
+            return LeaderBoardFragment.newInstance();
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if(position==0) return "Live Feed";
-        else return "Chats";
+        else if(position == 1) return "Chats";
+        else return "LeaderBoards";
     }
 }
