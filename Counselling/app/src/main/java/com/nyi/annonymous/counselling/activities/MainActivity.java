@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Menu leftMenu = navigationView.getMenu();
         navigationView.setNavigationItemSelectedListener(this);
-        FirebaseUtil.getObjInstance().uploadUser();
+        //FirebaseUtil.getObjInstance().uploadUser();
+        //FirebaseUtil.getObjInstance().StartChat("Nyi", "Myat");
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout, HomeFragment.newInstance())

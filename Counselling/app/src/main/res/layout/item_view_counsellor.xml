@@ -14,24 +14,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="120dp"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_counsellor"
-                android:layout_width="94dp"
-                android:layout_height="94dp"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
                 android:src="@drawable/placeholder"
-                android:layout_margin="@dimen/margin_medium"/>
+                android:layout_margin="@dimen/margin_medium_3"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/margin_medium"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_alignBottom="@id/iv_counsellor"
                 android:layout_toRightOf="@id/iv_counsellor"
                 android:layout_marginTop="@dimen/margin_medium">
 
@@ -39,6 +37,7 @@
                     android:id="@+id/tv_coun_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
                     android:text="Name"
                     android:textColor="#000"
                     android:layout_weight="1"
@@ -49,6 +48,7 @@
                     android:id="@+id/tv_coun_position"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
                     android:text="Position"
                     android:textColor="#000"
                     android:layout_weight="1"
@@ -58,6 +58,7 @@
                     android:id="@+id/tv_coun_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
                     android:text="Price"
                     android:textColor="#000"
                     android:layout_weight="1"

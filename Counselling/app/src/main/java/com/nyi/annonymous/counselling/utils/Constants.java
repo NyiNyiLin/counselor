@@ -8,4 +8,5 @@ public class Constants {
     public static final String REF_USER = "user";
     public static final String REF_LIVEFEED = "livefeed";
     public static final String REF_POST = "post";
+    public static final String REF_CHAT = "chat";
 }

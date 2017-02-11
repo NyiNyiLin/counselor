@@ -7,7 +7,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
+import com.nyi.annonymous.counselling.data.VOS.Msg;
+import com.nyi.annonymous.counselling.data.VOS.MsgList;
 import com.nyi.annonymous.counselling.data.VOS.User;
+import com.nyi.annonymous.counselling.data.models.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +57,35 @@ public class FirebaseUtil {
 
     }
 
-    public void uploadUser(){
+    public void uploadUser(String userName, String password){
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        mDatabase.child(Constants.REF_USER).child(userName).setValue(new User(userName, password));
+    }
 
-        mDatabase.child(Constants.REF_USER).child("Myat").setValue(new User("Myat", "comment", "chat"));
+    public void post(String feeling, boolean isAnnoy){
+        DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED);
+        String key = databaseReference.push().getKey();
+        databaseReference.child(key).setValue(new LiveFeed(key, UserModel.objInstance().getUser().getName(), feeling, 0, "comment id", isAnnoy));
+
+        DatabaseReference databaseReference1 = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getUser().getName()).child(Constants.REF_POST);
+        databaseReference1.push().setValue(key);
+    }
+
+    public void StartChat(String username1, String username2){
+        DatabaseReference mDatabase1 = FirebaseDatabase.getInstance().getReference().child(Constants.REF_USER).child(username1).child("chat");
+        DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference().child(Constants.REF_USER).child(username2).child("chat");
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(Constants.REF_CHAT);
+        String key = mDatabase.push().getKey();
+
+        MsgList msgList = new MsgList(username1, username2, key);
+        mDatabase1.push().setValue(msgList);
+        mDatabase2.push().setValue(msgList);
+
+        mDatabase.child(key).push().setValue(new Msg("Hi", username1));
+
+        UserModel.objInstance().setMsgList(msgList);
     }
 
 }

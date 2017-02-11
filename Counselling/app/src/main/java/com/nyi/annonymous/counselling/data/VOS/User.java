@@ -9,39 +9,25 @@ import java.util.List;
 
 public class User {
     private String name;
-    private String comment;
-    private String chat;
+    private String password;
 
     public User() {
     }
 
-    public User(String name, String comment, String chat) {
+    public User(String name, String password) {
         this.name = name;
-        this.comment = comment;
-        this.chat = chat;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public void setChat(String chat) {
-        this.chat = chat;
-    }
 
     public String getName() {
         return name;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public String getChat() {
-        return chat;
+    public String getPassword() {
+        return password;
     }
 }

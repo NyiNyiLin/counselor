@@ -86,7 +86,7 @@ public class PostFragment extends DialogFragment {
                 });
 
                 if(!feeling.isEmpty()){
-                    post(feeling);
+                    FirebaseUtil.getObjInstance().post(feeling, isAnnoy);
 
                     PostFragment.this.dismiss();
                 }
@@ -97,13 +97,6 @@ public class PostFragment extends DialogFragment {
         return builder.create();
     }
 
-    private void post(String feeling){
-        DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED);
-        String key = databaseReference.push().getKey();
-        databaseReference.child(key).setValue(new LiveFeed("ID", UserModel.objInstance().getUser().getName(), feeling, 0, "comment id", isAnnoy));
 
-        DatabaseReference databaseReference1 = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getUser().getName()).child(Constants.REF_POST);
-        databaseReference1.push().setValue(key);
-    }
 
 }

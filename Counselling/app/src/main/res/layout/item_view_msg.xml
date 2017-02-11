@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_marginLeft="@dimen/margin_medium"
+    android:layout_marginRight="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_medium"
+    app:cardCornerRadius="@dimen/margin_medium"
+    app:cardElevation="@dimen/margin_medium"
+    app:cardBackgroundColor="#fff">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_counsellor"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/placeholder"
+        android:layout_margin="@dimen/margin_medium"/>
+
+    <TextView
+        android:id="@+id/tv_msg_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="name"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_toRightOf="@id/iv_counsellor"/>
+
+</RelativeLayout>

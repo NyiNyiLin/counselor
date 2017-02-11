@@ -57,7 +57,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 boolean isLogIn= false;
                 for(User user: userList){
-                    if(user.getName().compareTo(userName.getText().toString()) == 0 && password.getText().toString().compareTo("123") == 0){
+                    if(user.getName().compareTo(userName.getText().toString()) == 0 && password.getText().toString().compareTo(user.getPassword()) == 0){
                         UserModel.objInstance().setUser(user);
 
                         Log.d("Counselling", "user " + user.getName());

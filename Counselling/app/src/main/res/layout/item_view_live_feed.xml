@@ -52,6 +52,13 @@
                     android:textColor="#000"/>
             </LinearLayout>
 
+            <view
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,21 +71,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="@dimen/margin_small"
                     android:text="Like - 30"
-                    android:textColor="#fff"/>
+                    android:textColor="@color/colorPrimary"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:padding="@dimen/margin_small"
                     android:text="Comment"
-                    android:textColor="#fff"
+                    android:textColor="@color/colorPrimary"
                     android:layout_marginLeft="@dimen/margin_small"/>
             </LinearLayout>
 

@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.nyi.annonymous.counselling.fragments.ChatFragment;
 import com.nyi.annonymous.counselling.fragments.LeaderBoardFragment;
 import com.nyi.annonymous.counselling.fragments.LiveFeedFragment;
 
@@ -23,7 +24,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             return LiveFeedFragment.newInstance();
         }
         else if(position == 1){
-            return new Fragment();
+            return ChatFragment.newInstance();
         }
         else {
             return LeaderBoardFragment.newInstance();

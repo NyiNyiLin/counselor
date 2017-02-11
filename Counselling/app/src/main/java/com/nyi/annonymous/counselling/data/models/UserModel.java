@@ -1,5 +1,6 @@
 package com.nyi.annonymous.counselling.data.models;
 
+import com.nyi.annonymous.counselling.data.VOS.MsgList;
 import com.nyi.annonymous.counselling.data.VOS.User;
 
 /**
@@ -12,6 +13,7 @@ public class UserModel {
 
     private boolean isSignIn = false;
     private User user;
+    private MsgList msgList;
 
     private UserModel(){
     }
@@ -35,5 +37,13 @@ public class UserModel {
 
     public boolean isSignIn() {
         return isSignIn;
+    }
+
+    public MsgList getMsgList() {
+        return msgList;
+    }
+
+    public void setMsgList(MsgList msgList) {
+        this.msgList = msgList;
     }
 }
