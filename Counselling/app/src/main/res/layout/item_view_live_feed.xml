@@ -28,7 +28,7 @@
                     android:layout_height="48dp"
                     android:src="@drawable/placeholder" />
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:id="@+id/tv_item_view_live_feed_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -42,9 +42,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:padding="@dimen/margin_medium">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:id="@+id/tv_item_view_live_feed_post"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,12 +53,13 @@
                     android:textColor="#000"/>
             </LinearLayout>
 
-            <view
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorPrimary"
-                android:layout_marginLeft="@dimen/margin_small"
-                android:layout_marginRight="@dimen/margin_small"/>
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,16 +68,15 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/margin_small">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:id="@+id/tv_iv_live_ffed_like"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="@dimen/margin_small"
-                    android:text="Like - 30"
+                    android:text="Vote - 30"
                     android:textColor="@color/colorPrimary"/>
-
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
@@ -83,7 +84,7 @@
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginBottom="@dimen/margin_small"/>
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

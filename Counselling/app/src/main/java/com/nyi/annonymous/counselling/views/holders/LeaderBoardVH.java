@@ -42,7 +42,7 @@ public class LeaderBoardVH extends RecyclerView.ViewHolder {
         ivChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                leaderBroadControl.onTapMsg();
+                leaderBroadControl.onTapMsg(counsellor);
             }
         });
     }
@@ -51,11 +51,11 @@ public class LeaderBoardVH extends RecyclerView.ViewHolder {
         this.counsellor = counsellor;
         tvname.setText(counsellor.getName());
         tvposition.setText(counsellor.getPosition());
-        tvprice.setText(counsellor.getPrice() + "KS");
+        tvprice.setText("Vote " + counsellor.getPrice());
 
     }
 
     public interface LeaderBroadControl{
-        void onTapMsg();
+        void onTapMsg(Counsellor counsellor);
     }
 }

@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.nyi.annonymous.counselling.activities.AskActivity"
-    tools:showIn="@layout/activity_ask">
+    tools:showIn="@layout/activity_ask"
+    android:background="@color/colorBg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
             android:layout_marginTop="@dimen/margin_medium_2">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/ll_cv_health"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_weight="1"
@@ -30,25 +32,28 @@
             app:cardCornerRadius="@dimen/margin_small"
             app:cardBackgroundColor="#fff">
 
-            <TextView
+            <com.nyi.annonymous.counselling.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Health Problem"
+                android:text="က်န္းမာေရး"
                 android:textColor="@color/colorPrimary"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:id="@+id/MMTextView" />
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/ll_cv_ep"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_weight="1"
-            android:layout_marginLeft="@dimen/margin_medium">
+            android:layout_marginLeft="@dimen/margin_medium"
+            app:cardBackgroundColor="#fff">
 
-            <TextView
+            <com.nyi.annonymous.counselling.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Education Problem"
+                android:text="ပညာေရး"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"/>
 
@@ -65,6 +70,7 @@
             android:layout_marginTop="@dimen/margin_medium_2">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/ll_cv_jp"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
@@ -72,25 +78,26 @@
                 app:cardCornerRadius="@dimen/margin_small"
                 app:cardBackgroundColor="#fff">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Job Problem"
+                    android:text="အလုပ္အကိုင္"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"/>
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/ll_cv_sp"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/margin_medium">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Social Problem"
+                    android:text="လူမႈေရး"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"/>
 
@@ -107,6 +114,7 @@
             android:layout_marginTop="@dimen/margin_medium_2">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/ll_cv_l"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
@@ -114,25 +122,26 @@
                 app:cardCornerRadius="@dimen/margin_small"
                 app:cardBackgroundColor="#fff">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Law"
+                    android:text="ဥပေဒ"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"/>
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/ll_cv_rp"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/margin_medium">
 
-                <TextView
+                <com.nyi.annonymous.counselling.components.MMTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Relationship Problem"
+                    android:text="အခ်စ္ေရး"
                     android:textColor="@color/colorPrimary"
                     android:gravity="center"/>
 

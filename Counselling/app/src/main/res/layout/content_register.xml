@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.nyi.annonymous.counselling.activities.RegisterActivity"
+    tools:showIn="@layout/activity_register">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/margin_large"
+            android:text="@string/app_name"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_heading_1x" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="64dp"
+            android:background="@color/colorWhite"
+            app:cardCornerRadius="@dimen/margin_medium"
+            app:cardElevation="@dimen/margin_medium">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_large"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_large">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small">
+
+                    <com.nyi.annonymous.counselling.components.MMEditText
+                        android:id="@+id/et_register_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="User Name"
+                        android:textColorHint="@color/colorAccent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.nyi.annonymous.counselling.components.MMEditText
+                        android:id="@+id/et_register_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/colorAccent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:background="@color/colorPrimary"
+                    android:elevation="8dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Register"
+                    android:textColor="@color/colorWhite"
+                    android:onClick="onClickLogIn"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:id="@+id/tv_log_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Already User?? Log in!!"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_regular_2x"
+            android:gravity="center"
+            android:layout_below="@id/cv_main"
+            android:layout_marginTop="@dimen/margin_medium_3"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

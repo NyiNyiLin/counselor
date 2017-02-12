@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.activities.ChatActivity;
+import com.nyi.annonymous.counselling.activities.LogInActivity;
 import com.nyi.annonymous.counselling.adapters.LiveFeedAdapter;
 import com.nyi.annonymous.counselling.adapters.MsgListAdapter;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
@@ -44,6 +46,9 @@ public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
 
     @BindView(R.id.rv_live_feed)
     RecyclerView rvLiveFeed;
+
+    @BindView(R.id.btn_singin)
+    Button btnSignIn;
 
     private MsgListAdapter msgListAdapter;
     private List<MsgList> msgLists = new ArrayList<>();
@@ -78,7 +83,17 @@ public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
         LinearLayoutManager layoutManager = new LinearLayoutManager(Counselling.getContext(), LinearLayoutManager.VERTICAL, false);
         rvLiveFeed.setLayoutManager(layoutManager);
 
-        getDataFromFirebase();
+        if(UserModel.objInstance().isSignIn()) getDataFromFirebase();
+        else btnSignIn.setVisibility(View.VISIBLE);
+
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), LogInActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

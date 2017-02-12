@@ -1,5 +1,6 @@
 package com.nyi.annonymous.counselling.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nyi.annonymous.counselling.R;
+import com.nyi.annonymous.counselling.data.models.UserModel;
 import com.nyi.annonymous.counselling.fragments.HomeFragment;
 import com.nyi.annonymous.counselling.fragments.PostFragment;
 import com.nyi.annonymous.counselling.utils.FirebaseUtil;
@@ -23,7 +25,7 @@ import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
@@ -31,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.navigation_view)
+    /*@BindView(R.id.navigation_view)
     NavigationView navigationView;
 
     @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    DrawerLayout drawerLayout;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +48,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp);
+            actionBar.setLogo(R.mipmap.ic_launcher);
         }
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
-                DialogFragment postDial = PostFragment.newInstance();
-                postDial.show(getSupportFragmentManager(), "Post");
+                if(UserModel.objInstance().isSignIn()){
+                    DialogFragment postDial = PostFragment.newInstance();
+                    postDial.show(getSupportFragmentManager(), "Post");
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                    startActivity(intent);
+                }
+
+
             }
         });
 
-        Menu leftMenu = navigationView.getMenu();
-        navigationView.setNavigationItemSelectedListener(this);
+        /*Menu leftMenu = navigationView.getMenu();
+        navigationView.setNavigationItemSelectedListener(this);*/
         //FirebaseUtil.getObjInstance().uploadUser();
         //FirebaseUtil.getObjInstance().StartChat("Nyi", "Myat");
 
@@ -89,15 +95,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
+                if(UserModel.objInstance().isSignIn()) {
+                    UserModel.objInstance().setSignIn(false);
+                    this.recreate();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
+                //drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+/*
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -116,5 +129,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return false;
-    }
+    }*/
 }

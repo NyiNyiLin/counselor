@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_select"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.nyi.annonymous.counselling.activities.SelectActivity"
+    android:orientation="vertical"
+    android:background="#e1f5fe">
+
+
+    <RelativeLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_main">
+
+        <View
+            android:id="@+id/placeholder1"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_alignTop="@id/placeholder1"
+            android:layout_marginLeft="32dp"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/iv_logo_1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/first_page_logo"
+            android:layout_centerVertical="true"/>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="စမ္းသပ္မယ္"
+            android:textColor="@drawable/text_color"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_toRightOf="@id/iv_logo_1"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_ask"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_main">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="32dp"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/iv_logo_3"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/first_page_logo"
+            android:layout_centerVertical="true"/>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ေဆြးေႏြးၾကမယ္"
+            android:textColor="@drawable/text_color"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_toRightOf="@id/iv_logo_3"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_share"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_main">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="32dp"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageView
+            android:id="@+id/iv_logo_2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/first_page_logo"
+            android:layout_centerVertical="true"/>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ေ၀မွ်မယ္"
+            android:textColor="@drawable/text_color"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_toRightOf="@id/iv_logo_2"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_help"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/margin_main">
+
+        <View
+            android:id="@+id/placeholder"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="32dp"
+            android:layout_alignBottom="@id/placeholder"
+            android:layout_alignParentTop="true" />
+
+        <ImageView
+            android:id="@+id/iv_logo_4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/first_page_logo"
+            android:layout_centerVertical="true"/>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ကူညီပါရေစ"
+            android:textColor="@drawable/text_color"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_toRightOf="@id/iv_logo_4"
+            android:layout_centerVertical="true"/>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

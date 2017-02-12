@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.nyi.annonymous.counselling.activities.SelectActivity"
-    tools:showIn="@layout/activity_select"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,18 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#e1f5fe"
+        android:background="#bdbdbd"
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Test"
             android:textSize="@dimen/text_heading_1x"/>
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -40,18 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#b3e5fc"
+        android:background="#81d4fa"
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Share"
             android:textSize="@dimen/text_heading_1x"/>
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -65,18 +64,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#81d4fa"
+        android:background="#29b6f6"
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Ask"
             android:textSize="@dimen/text_heading_1x"/>
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -90,18 +89,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#4fc3f7"
+        android:background="#0277bd"
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Help"
             android:textSize="@dimen/text_heading_1x"/>
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

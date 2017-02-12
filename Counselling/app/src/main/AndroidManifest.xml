@@ -54,6 +54,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nyi.annonymous.counselling.activities.SelectActivity" />
         </activity>
+        <activity
+            android:name=".activities.MyCounsellorActivity"
+            android:label="@string/title_activity_my_counsellor"
+            android:parentActivityName=".activities.AskActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nyi.annonymous.counselling.activities.AskActivity" />
+        </activity>
+        <activity
+            android:name=".activities.TestResultActivity"
+            android:label="@string/title_activity_test_result"
+            android:parentActivityName=".activities.SelectActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nyi.annonymous.counselling.activities.SelectActivity" />
+        </activity>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

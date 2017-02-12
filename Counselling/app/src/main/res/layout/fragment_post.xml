@@ -9,13 +9,13 @@
     android:orientation="vertical"
     android:padding="@dimen/margin_medium">
 
-    <TextView
+    <com.nyi.annonymous.counselling.components.MMTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Share your feeling"
         android:textSize="@dimen/text_heading_1x"/>
 
-    <EditText
+    <com.nyi.annonymous.counselling.components.MMEditText
         android:id="@+id/et_feeling"
         android:layout_width="match_parent"
         android:layout_height="240dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Post Anonymously"/>
 
-    <Button
+    <com.nyi.annonymous.counselling.components.MMButton
         android:id="@+id/btn_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

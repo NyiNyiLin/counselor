@@ -4,14 +4,16 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
-            <TextView
+            <com.nyi.annonymous.counselling.components.MMTextView
                 android:id="@+id/messageTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:text="mm"
-                android:textColor="#000"
+                android:textColor="#fff"
+                android:padding="@dimen/margin_medium"
                 android:gravity="left"
+                android:background="@drawable/bg_msg"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 

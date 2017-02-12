@@ -18,7 +18,7 @@
         android:src="@drawable/placeholder"
         android:layout_margin="@dimen/margin_medium"/>
 
-    <TextView
+    <com.nyi.annonymous.counselling.components.MMTextView
         android:id="@+id/tv_msg_list_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"

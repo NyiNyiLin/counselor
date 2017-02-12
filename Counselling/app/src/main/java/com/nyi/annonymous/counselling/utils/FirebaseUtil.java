@@ -72,7 +72,7 @@ public class FirebaseUtil {
         databaseReference1.push().setValue(key);
     }
 
-    public void StartChat(String username1, String username2){
+    public String StartChat(String username1, String username2){
         DatabaseReference mDatabase1 = FirebaseDatabase.getInstance().getReference().child(Constants.REF_USER).child(username1).child("chat");
         DatabaseReference mDatabase2 = FirebaseDatabase.getInstance().getReference().child(Constants.REF_USER).child(username2).child("chat");
 
@@ -86,6 +86,7 @@ public class FirebaseUtil {
         mDatabase.child(key).push().setValue(new Msg("Hi", username1));
 
         UserModel.objInstance().setMsgList(msgList);
+        return key;
     }
 
 }

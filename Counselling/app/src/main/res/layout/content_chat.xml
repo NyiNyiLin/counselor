@@ -28,14 +28,14 @@
         android:layout_alignParentStart="true"
         android:orientation="horizontal">
 
-        <EditText
+        <com.nyi.annonymous.counselling.components.MMEditText
             android:id="@+id/et_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"/>
 
-        <Button
+        <com.nyi.annonymous.counselling.components.MMButton
             android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

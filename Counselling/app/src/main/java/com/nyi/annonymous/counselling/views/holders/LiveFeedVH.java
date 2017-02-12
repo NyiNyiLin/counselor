@@ -46,7 +46,7 @@ public class LiveFeedVH extends RecyclerView.ViewHolder {
         this.liveFeed = liveFeed;
         name.setText(liveFeed.getName());
         tvPost.setText(liveFeed.getPost());
-        tvLike.setText("Like - " +liveFeed.getLikeCount());
+        tvLike.setText("Vote - " +liveFeed.getLikeCount());
 
         if(liveFeed.isAnnou()){
             name.setText("Anonymouus");

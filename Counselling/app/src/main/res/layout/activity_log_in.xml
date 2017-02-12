@@ -28,7 +28,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
+        <com.nyi.annonymous.counselling.components.MMTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_small">
 
-                    <EditText
+                    <com.nyi.annonymous.counselling.components.MMEditText
                         android:id="@+id/et_login_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <com.nyi.annonymous.counselling.components.MMEditText
                         android:id="@+id/et_login_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,6 +97,17 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
+        <com.nyi.annonymous.counselling.components.MMTextView
+            android:id="@+id/tv_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register a new User"
+            android:textColor="#fff"
+            android:textSize="@dimen/text_regular_2x"
+            android:gravity="center"
+            android:layout_below="@id/cv_main"
+            android:layout_marginTop="@dimen/margin_medium_3"/>
 
     </RelativeLayout>
 
