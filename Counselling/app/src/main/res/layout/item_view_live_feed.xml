@@ -85,6 +85,7 @@
                     android:layout_marginBottom="@dimen/margin_small"/>
 
                 <com.nyi.annonymous.counselling.components.MMTextView
+                    android:id="@+id/tv_live_feed_comment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

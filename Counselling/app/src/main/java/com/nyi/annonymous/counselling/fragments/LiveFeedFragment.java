@@ -2,14 +2,18 @@ package com.nyi.annonymous.counselling.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +22,7 @@ import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.adapters.LiveFeedAdapter;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
+import com.nyi.annonymous.counselling.data.models.UserModel;
 import com.nyi.annonymous.counselling.utils.Constants;
 import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 import com.nyi.annonymous.counselling.views.holders.LiveFeedVH;
@@ -86,12 +91,25 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
     }
 
     @Override
-    public void onTapLike() {
+    public void onTapLike(LiveFeed liveFeed) {
+        int like = liveFeed.getLikeCount();
 
+        liveFeed.setLikeCount(like+1);
+
+        DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED).child(liveFeed.getID());
+        databaseReference.setValue(liveFeed).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Log.d("Councellor", "LiveFeeedFragment onTapLike like complete");
+
+
+            }
+        });
     }
 
     @Override
-    public void onTapComment() {
+    public void onTapComment(LiveFeed liveFeed) {
+
 
     }
 
@@ -101,7 +119,7 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 LiveFeed liveFeed = dataSnapshot.getValue(LiveFeed.class);
-                liveFeed.setID(s);
+                //liveFeed.setID(s);
                 liveFeedAdapter.addNewMenu(liveFeed);
             }
 

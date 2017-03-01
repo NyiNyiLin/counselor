@@ -25,6 +25,9 @@ public class LiveFeedVH extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_iv_live_ffed_like)
     TextView tvLike;
 
+    @BindView(R.id.tv_live_feed_comment)
+    TextView tvComment;
+
 
     private LiveFeedControl liveFeedControl;
     private LiveFeed liveFeed;
@@ -37,9 +40,17 @@ public class LiveFeedVH extends RecyclerView.ViewHolder {
         tvLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                liveFeedControl.onTapLike();
+                tvLike.setText("Vote - " +(liveFeed.getLikeCount()+1));
+                liveFeedControl.onTapLike(liveFeed);
             }
         });
+        tvComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                liveFeedControl.onTapComment(liveFeed);
+            }
+        });
+
     }
 
     public void bindData(LiveFeed liveFeed){
@@ -54,7 +65,7 @@ public class LiveFeedVH extends RecyclerView.ViewHolder {
     }
 
     public interface LiveFeedControl{
-        void onTapLike();
-        void onTapComment();
+        void onTapLike(LiveFeed liveFeed);
+        void onTapComment(LiveFeed liveFeed);
     }
 }

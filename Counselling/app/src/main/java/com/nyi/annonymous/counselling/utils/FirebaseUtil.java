@@ -64,9 +64,14 @@ public class FirebaseUtil {
     }
 
     public void post(String feeling, boolean isAnnoy){
+        //Post Comment
+        DatabaseReference databaseReferenceComment = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_COMMENT);
+        String commentID = databaseReferenceComment.push().getKey();
+
+        //Post LiveFeed
         DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED);
         String key = databaseReference.push().getKey();
-        databaseReference.child(key).setValue(new LiveFeed(key, UserModel.objInstance().getUser().getName(), feeling, 0, "comment id", isAnnoy));
+        databaseReference.child(key).setValue(new LiveFeed(key, UserModel.objInstance().getUser().getName(), feeling, 0, commentID, isAnnoy));
 
         DatabaseReference databaseReference1 = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getUser().getName()).child(Constants.REF_POST);
         databaseReference1.push().setValue(key);
