@@ -19,6 +19,7 @@ import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.activities.ChatActivity;
 import com.nyi.annonymous.counselling.activities.LogInActivity;
+import com.nyi.annonymous.counselling.activities.LogInfbActivity;
 import com.nyi.annonymous.counselling.adapters.LiveFeedAdapter;
 import com.nyi.annonymous.counselling.adapters.MsgListAdapter;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
@@ -90,16 +91,25 @@ public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), LogInActivity.class);
+                Intent intent = LogInfbActivity.newIntent();
                 startActivity(intent);
             }
         });
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(UserModel.objInstance().isSignIn()) {
+            getDataFromFirebase();
+            btnSignIn.setVisibility(View.INVISIBLE);
+        }
+        else btnSignIn.setVisibility(View.VISIBLE);
+    }
 
     private void getDataFromFirebase(){
-        final DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getUser().getName()).child(Constants.REF_CHAT);
+        final DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getFirebaseUser().getUid()).child(Constants.REF_CHAT);
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

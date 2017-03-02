@@ -25,15 +25,14 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else if(position == 1){
             return ChatFragment.newInstance();
-        }
-        else {
-            return LeaderBoardFragment.newInstance();
+        }else{
+            return ChatFragment.newInstance();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Override

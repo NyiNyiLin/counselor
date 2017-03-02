@@ -15,4 +15,10 @@
     <string name="title_activity_my_counsellor">MyCounsellorActivity</string>
     <string name="title_activity_test_result">TestResult</string>
     <string name="title_activity_register">Register</string>
+
+    <string name="facebook_app_id">686248411586125</string>
+    <string name="title_activity_log_infb">LogInfbActivity</string>
+    <string name="fb_login_protocol_scheme">fb686248411586125</string>
+
+    <string name="login_warining">We do not post any status to fb and we gurantee that all of the data you provided is saved safely.</string>
 </resources>

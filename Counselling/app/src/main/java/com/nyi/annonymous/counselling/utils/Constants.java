@@ -10,4 +10,6 @@ public class Constants {
     public static final String REF_POST = "post";
     public static final String REF_CHAT = "chat";
     public static final String REF_COMMENT = "comment";
+    public static final String TAG = "AKyan Pay";
+    public static final String REF_USER_LIST = "userlist";
 }

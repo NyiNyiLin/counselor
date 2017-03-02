@@ -21,6 +21,7 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.activities.LogInActivity;
+import com.nyi.annonymous.counselling.activities.LogInfbActivity;
 import com.nyi.annonymous.counselling.adapters.ViewPagerAdapter;
 import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
 import com.nyi.annonymous.counselling.data.models.UserModel;
@@ -90,7 +91,7 @@ public class PostFragment extends DialogFragment {
                 if(!feeling.isEmpty()){
                     if(UserModel.objInstance().isSignIn()) FirebaseUtil.getObjInstance().post(feeling, isAnnoy);
                     else {
-                        Intent intent= new Intent(getContext(), LogInActivity.class);
+                        Intent intent= LogInfbActivity.newIntent();
                         startActivity(intent);
                     }
 

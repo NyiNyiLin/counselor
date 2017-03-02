@@ -1,7 +1,12 @@
 package com.nyi.annonymous.counselling.data.models;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.nyi.annonymous.counselling.data.VOS.MsgList;
 import com.nyi.annonymous.counselling.data.VOS.User;
+import com.nyi.annonymous.counselling.data.VOS.UserVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IN-3442 on 30-Nov-16.
@@ -14,6 +19,9 @@ public class UserModel {
     private boolean isSignIn = false;
     private User user;
     private MsgList msgList;
+
+    private List<UserVO> userList = new ArrayList<>();
+    private FirebaseUser firebaseUser;
 
     private UserModel(){
     }
@@ -45,5 +53,21 @@ public class UserModel {
 
     public void setMsgList(MsgList msgList) {
         this.msgList = msgList;
+    }
+
+    public void addNewUser(UserVO user){
+        userList.add(user);
+    }
+
+    public List<UserVO> getUserList() {
+        return userList;
+    }
+
+    public FirebaseUser getFirebaseUser() {
+        return firebaseUser;
+    }
+
+    public void setFirebaseUser(FirebaseUser firebaseUser) {
+        this.firebaseUser = firebaseUser;
     }
 }

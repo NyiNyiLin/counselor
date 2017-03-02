@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 
+import com.nyi.annonymous.counselling.utils.FirebaseUtil;
+
 /**
  * Created by IN-3442 on 21-Oct-16.
  */
@@ -24,6 +26,8 @@ public class Counselling extends Application{
         //textTypeface = Typeface.createFromAsset(getAssets(),  "fonts/CoreSansG-Regular.ttf");
         //FirebaseUtil.getObjInstance().uploadTestMenu();
         //FirebaseUtil.getObjInstance().uploadTestShop();
+
+        FirebaseUtil.getObjInstance().getUserList();
     }
 
     public static Context getContext() {

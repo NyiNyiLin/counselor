@@ -3,6 +3,9 @@ package com.nyi.annonymous.counselling.utils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nyi.annonymous.counselling.Counselling;
@@ -10,6 +13,7 @@ import com.nyi.annonymous.counselling.data.VOS.LiveFeed;
 import com.nyi.annonymous.counselling.data.VOS.Msg;
 import com.nyi.annonymous.counselling.data.VOS.MsgList;
 import com.nyi.annonymous.counselling.data.VOS.User;
+import com.nyi.annonymous.counselling.data.VOS.UserVO;
 import com.nyi.annonymous.counselling.data.models.UserModel;
 
 import java.util.ArrayList;
@@ -71,9 +75,9 @@ public class FirebaseUtil {
         //Post LiveFeed
         DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED);
         String key = databaseReference.push().getKey();
-        databaseReference.child(key).setValue(new LiveFeed(key, UserModel.objInstance().getUser().getName(), feeling, 0, commentID, isAnnoy));
+        databaseReference.child(key).setValue(new LiveFeed(key, UserModel.objInstance().getFirebaseUser().getDisplayName(), feeling, 0, commentID, isAnnoy));
 
-        DatabaseReference databaseReference1 = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getUser().getName()).child(Constants.REF_POST);
+        DatabaseReference databaseReference1 = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_USER).child(UserModel.objInstance().getFirebaseUser().getUid()).child(Constants.REF_POST);
         databaseReference1.push().setValue(key);
     }
 
@@ -92,6 +96,38 @@ public class FirebaseUtil {
 
         UserModel.objInstance().setMsgList(msgList);
         return key;
+    }
+
+    public void getUserList(){
+        DatabaseReference mRefernece = FirebaseDatabase.getInstance().getReference().child(Constants.REF_USER_LIST);
+
+        mRefernece.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                UserVO user = dataSnapshot.getValue(UserVO.class);
+                UserModel.objInstance().addNewUser(user);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }
