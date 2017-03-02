@@ -3,6 +3,7 @@ package com.nyi.annonymous.counselling.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -109,8 +110,9 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
 
     @Override
     public void onTapComment(LiveFeed liveFeed) {
-
-
+        CommentDialogFragment dialog = CommentDialogFragment.newInstance(liveFeed.getCommentID());
+        dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
+        dialog.show(getFragmentManager(), "Comment");
     }
 
     private void getDataFromFirebase(){

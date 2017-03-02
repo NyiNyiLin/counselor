@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
                     DialogFragment postDial = PostFragment.newInstance();
                     postDial.show(getSupportFragmentManager(), "Post");
                 }else {
-                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                    Intent intent = LogInfbActivity.newIntent();
                     startActivity(intent);
                 }
 
