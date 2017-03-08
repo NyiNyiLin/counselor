@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nyi.annonymous.counselling.fragments.ProfileFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_profile_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile_pic"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="@dimen/margin_medium_2"
+            android:src="@drawable/placeholder" />
+
+        <LinearLayout
+            android:id="@+id/ll_profile_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_profile_pic"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_medium_2">
+
+            <TextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="name" />
+
+            <TextView
+                android:id="@+id/tv_profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="email" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/iv_profile_pic"
+            android:background="#f0f0f0" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/view_divider"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profile_log_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_medium_3"
+            android:layout_marginLeft="@dimen/margin_medium_2"
+            android:layout_marginRight="@dimen/margin_medium_2"
+            android:gravity="center"
+            android:text="Please log in with your facebook account to post your feeling" />
+
+        <Button
+            android:id="@+id/btn_profile_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="log in"
+            android:textColor="#fff"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

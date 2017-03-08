@@ -9,7 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -44,12 +47,14 @@ import butterknife.ButterKnife;
  */
 public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
 
-
-    @BindView(R.id.rv_live_feed)
-    RecyclerView rvLiveFeed;
+    @BindView(R.id.rv_chat)
+    RecyclerView rvChat;
 
     @BindView(R.id.btn_singin)
     Button btnSignIn;
+
+    @BindView(R.id.auto_chat_search)
+    AutoCompleteTextView autoChatSearch;
 
     private MsgListAdapter msgListAdapter;
     private List<MsgList> msgLists = new ArrayList<>();
@@ -76,17 +81,23 @@ public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_live_feed, container, false);
+        View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
         ButterKnife.bind(this, view);
 
-        rvLiveFeed.setAdapter(msgListAdapter);
+        rvChat.setAdapter(msgListAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(Counselling.getContext(), LinearLayoutManager.VERTICAL, false);
-        rvLiveFeed.setLayoutManager(layoutManager);
+        rvChat.setLayoutManager(layoutManager);
 
-        if(UserModel.objInstance().isSignIn()) getDataFromFirebase();
-        else btnSignIn.setVisibility(View.VISIBLE);
+        /*if(UserModel.objInstance().isSignIn()) getDataFromFirebase();
+        else btnSignIn.setVisibility(View.VISIBLE);*/
 
+        bindlistener();
+
+        return view;
+    }
+
+    private void bindlistener() {
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,17 +106,26 @@ public class ChatFragment extends Fragment implements MsgListVH.MsgListControl{
                 startActivity(intent);
             }
         });
-        return view;
+
+        ArrayAdapter<String> toAD = new ArrayAdapter<String>(
+                getContext(), android.R.layout.simple_dropdown_item_1line, UserModel.objInstance().getUserNameList());
+        autoChatSearch.setAdapter(toAD);
+        autoChatSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View arg0) {
+                autoChatSearch.showDropDown();
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(UserModel.objInstance().isSignIn()) {
+        /*if(UserModel.objInstance().isSignIn()) {
             getDataFromFirebase();
             btnSignIn.setVisibility(View.INVISIBLE);
         }
-        else btnSignIn.setVisibility(View.VISIBLE);
+        else btnSignIn.setVisibility(View.VISIBLE);*/
     }
 
     private void getDataFromFirebase(){

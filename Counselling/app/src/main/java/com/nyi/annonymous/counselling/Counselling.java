@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.nyi.annonymous.counselling.data.models.UserModel;
 import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 
 /**
@@ -13,6 +16,7 @@ import com.nyi.annonymous.counselling.utils.FirebaseUtil;
 
 public class Counselling extends Application{
     private static Context context;
+    FirebaseAuth firebaseAuth;
 
     @Override
     public void onCreate() {
@@ -28,6 +32,9 @@ public class Counselling extends Application{
         //FirebaseUtil.getObjInstance().uploadTestShop();
 
         FirebaseUtil.getObjInstance().getUserList();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user != null) UserModel.objInstance().setFirebaseUser(user);
     }
 
     public static Context getContext() {

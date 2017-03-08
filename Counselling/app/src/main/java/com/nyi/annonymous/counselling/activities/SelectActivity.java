@@ -60,7 +60,7 @@ public class SelectActivity extends AppCompatActivity {
         llask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(Counselling.getContext(), AskActivity.class);
+                Intent in = MyCounsellorActivity.newIntent();
                 startActivity(in);
             }
         });

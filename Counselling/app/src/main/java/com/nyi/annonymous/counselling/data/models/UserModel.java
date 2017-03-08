@@ -68,6 +68,19 @@ public class UserModel {
     }
 
     public void setFirebaseUser(FirebaseUser firebaseUser) {
+        isSignIn = true;
         this.firebaseUser = firebaseUser;
     }
+
+    public String[] getUserNameList(){
+
+        int size = userList.size();
+        String userNameList[] = new String[size];
+
+        for(int a = 0; a < size; a++){
+            userNameList[a] = userList.get(a).getName();
+        }
+        return userNameList;
+    }
+
 }

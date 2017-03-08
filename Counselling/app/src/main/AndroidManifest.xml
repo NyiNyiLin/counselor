@@ -58,7 +58,7 @@
         </activity>
         <activity
             android:name=".activities.MyCounsellorActivity"
-            android:label="@string/title_activity_my_counsellor"
+            android:label="@string/title_activity_ask"
             android:parentActivityName=".activities.AskActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

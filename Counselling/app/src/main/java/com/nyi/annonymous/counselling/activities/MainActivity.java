@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
-            actionBar.setLogo(R.mipmap.ic_launcher);
+            //actionBar.setLogo(R.mipmap.ic_launcher);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -95,16 +96,12 @@ public class MainActivity extends AppCompatActivity{
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                if(UserModel.objInstance().isSignIn()) {
-                    UserModel.objInstance().setSignIn(false);
-                    this.recreate();
-                }else{
-                    Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                    Intent intent = LogInfbActivity.newIntent();
                     startActivity(intent);
-                }
                 return true;
             case android.R.id.home:
                 //drawerLayout.openDrawer(GravityCompat.START);
+                finish();
                 return true;
         }
 

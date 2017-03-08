@@ -39,7 +39,7 @@ import butterknife.ButterKnife;
  * Use the {@link LiveFeedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedControl{
+public class LiveFeedFragment extends BaseLiveFeedFragment implements LiveFeedVH.LiveFeedControl{
 
 
     @BindView(R.id.rv_live_feed)
@@ -93,26 +93,12 @@ public class LiveFeedFragment extends Fragment implements LiveFeedVH.LiveFeedCon
 
     @Override
     public void onTapLike(LiveFeed liveFeed) {
-        int like = liveFeed.getLikeCount();
-
-        liveFeed.setLikeCount(like+1);
-
-        DatabaseReference databaseReference = FirebaseUtil.getObjInstance().getDatabaseReference().child(Constants.REF_LIVEFEED).child(liveFeed.getID());
-        databaseReference.setValue(liveFeed).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Log.d("Councellor", "LiveFeeedFragment onTapLike like complete");
-
-
-            }
-        });
+        likeFunc(liveFeed);
     }
 
     @Override
     public void onTapComment(LiveFeed liveFeed) {
-        CommentDialogFragment dialog = CommentDialogFragment.newInstance(liveFeed.getCommentID());
-        dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
-        dialog.show(getFragmentManager(), "Comment");
+        commentFunc(liveFeed);
     }
 
     private void getDataFromFirebase(){

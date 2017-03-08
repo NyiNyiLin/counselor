@@ -1,8 +1,10 @@
 package com.nyi.annonymous.counselling.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,11 @@ public class MyCounsellorActivity extends AppCompatActivity {
     private List<MyCounsellor> myCounsellorList = new ArrayList<>();
     private MyCounsellorAdapter myCounsellorAdapter;
 
+    public static Intent newIntent(){
+        Intent intent = new Intent(Counselling.getContext(), MyCounsellorActivity.class);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +42,10 @@ public class MyCounsellorActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         ButterKnife.bind(this, this);
 
@@ -69,8 +79,6 @@ public class MyCounsellorActivity extends AppCompatActivity {
         myCounsellorAdapter.addNewMenu(new MyCounsellor("Dr Htay Htay", "Teenager", "Work at blah blah blah"));
         myCounsellorAdapter.addNewMenu(new MyCounsellor("U Kyaw Swar", "Health Specialist", "-Psychologist\n" +
                 "-htayhtay@gmail.com\nWork at blah blah blah"));
-
-
 
 
     }

@@ -10,12 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +38,13 @@ import com.nyi.annonymous.counselling.utils.Constants;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class LogInfbActivity extends AppCompatActivity {
+
+    @BindView(R.id.btn_fb_login_log_out)
+    Button btnLogOut;
 
     LoginButton loginButton;
     CallbackManager callbackManager;
@@ -52,6 +60,7 @@ public class LogInfbActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_infb);
+        ButterKnife.bind(this, this);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -68,15 +77,16 @@ public class LogInfbActivity extends AppCompatActivity {
                     UserModel.objInstance().setSignIn(true);
                     UserModel.objInstance().setFirebaseUser(user);
 
-                    finish();
+                    //finish();
                 } else {
                     // User is signed out
                     Log.d(Constants.TAG, "onAuthStateChanged:signed_out");
+                    UserModel.objInstance().setSignIn(false);
                 }
+                logInControl();
                 // ...
             }
         };
-
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -111,6 +121,24 @@ public class LogInfbActivity extends AppCompatActivity {
             }
         });
 
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                LoginManager.getInstance().logOut();
+            }
+        });
+    }
+
+    private void logInControl(){
+        if(UserModel.objInstance().isSignIn()){
+            loginButton.setVisibility(View.GONE);
+            btnLogOut.setVisibility(View.VISIBLE);
+        }
+        else{
+            loginButton.setVisibility(View.VISIBLE);
+            btnLogOut.setVisibility(View.GONE);
+        }
     }
 
     private void checkUserIsNewOrExisting(FirebaseUser user) {

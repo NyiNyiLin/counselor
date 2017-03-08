@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.nyi.annonymous.counselling.fragments.ChatFragment;
 import com.nyi.annonymous.counselling.fragments.LeaderBoardFragment;
 import com.nyi.annonymous.counselling.fragments.LiveFeedFragment;
+import com.nyi.annonymous.counselling.fragments.ProfileFragment;
 
 /**
  * Created by IN-3442 on 11-Oct-15.
@@ -25,20 +26,20 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else if(position == 1){
             return ChatFragment.newInstance();
-        }else{
-            return ChatFragment.newInstance();
+        }else {
+            return ProfileFragment.newInstance();
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if(position==0) return "Live Feed";
         else if(position == 1) return "Chats";
-        else return "LeaderBoards";
+        else return "Profile";
     }
 }
