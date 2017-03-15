@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nyi.annonymous.counselling.Counselling;
 import com.nyi.annonymous.counselling.R;
 import com.nyi.annonymous.counselling.data.VOS.Counsellor;
 import com.nyi.annonymous.counselling.data.VOS.MyCounsellor;
@@ -33,6 +35,13 @@ public class MyCounsellorVH extends RecyclerView.ViewHolder {
     public MyCounsellorVH(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Counselling.getContext(), "We are contacting with counsellor.  Stay tune.  We will let you know when ready.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void bindData(MyCounsellor counsellor){
